@@ -12,7 +12,7 @@ import CoreData
 import CoreLocation
 
 class imageCollectionViewController: UIViewController, NSFetchedResultsControllerDelegate,  UICollectionViewDelegate, UICollectionViewDataSource  {
-
+    var pageNo : Int = 1
     var obj1 = flickrImageSearch()
     @IBOutlet weak var imgCollection: UICollectionView!
     
@@ -55,8 +55,9 @@ class imageCollectionViewController: UIViewController, NSFetchedResultsControlle
                
                 
                 if pages != nil {
-                    let randomPage = arc4random_uniform(UInt32(pages!)) + 1
-                    self.obj1.urlsFromFlickrAPI(latitude: (droppedPin?.lat)!, longitude: (droppedPin?.long)!, page: Int(randomPage))
+                    let randomPageNumber = arc4random_uniform(UInt32(min((self.pageNo) ,4000/20))) + 1
+                    self.pageNo = pages!
+                    self.obj1.urlsFromFlickrAPI(latitude: (droppedPin?.lat)!, longitude: (droppedPin?.long)!, page: Int(randomPageNumber))
                         print("this is working compleejhbvsbhkjk")
                 }
                 else
@@ -103,7 +104,7 @@ class imageCollectionViewController: UIViewController, NSFetchedResultsControlle
             }
         
         }
-        let randomPageNumber = arc4random_uniform(UInt32(totalPages)) + 1
+              let randomPageNumber = arc4random_uniform(UInt32(min((pageNo) ,4000/20))) + 1
      obj1.urlsFromFlickrAPI(latitude: (droppedPin?.lat)!, longitude: (droppedPin?.long)!, page: Int(randomPageNumber))
         
     }
