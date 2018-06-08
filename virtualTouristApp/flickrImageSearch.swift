@@ -56,7 +56,7 @@ class flickrImageSearch: UIViewController {
     
        func getDataFromFlickr(latitude : CLLocationDegrees, longitude : CLLocationDegrees, completion : @escaping (_ pages: Int?, _ numberOfImages: Int?)->Void){
         
-        let url = NSMutableURLRequest(url: URL(string: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=3df6a248c65ec4eda07a7b070d5f09aa&lat=\(latitude)&lon=\(longitude)&extras=url_m&per_page=20&format=json&nojsoncallback=1")!)
+        let url = NSMutableURLRequest(url: URL(string: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=75ea49e1098e20b626cf636f50f692db&lat=\(latitude)&lon=\(longitude)&extras=url_m&per_page=20&format=json&nojsoncallback=1")!)
         print(url)
         let session = URLSession.shared
         let task = session.dataTask(with: url as URLRequest) { (data, response, error) in
