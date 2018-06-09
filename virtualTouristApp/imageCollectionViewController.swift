@@ -15,7 +15,6 @@ class imageCollectionViewController: UIViewController, NSFetchedResultsControlle
     var pageNo : Int = 1
     var obj1 = flickrImageSearch()
     @IBOutlet weak var imgCollection: UICollectionView!
-    
     var totalPages = 0
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var mapView: MKMapView!
@@ -55,8 +54,8 @@ class imageCollectionViewController: UIViewController, NSFetchedResultsControlle
                
                 
                 if pages != nil {
-                   let randomPageNumber = arc4random_uniform(UInt32(10)) + 1
-                    self.pageNo = pages!
+                    let randomPageNumber = arc4random_uniform(UInt32(min(pages!,4000/20))) + 1 //this was recommended in the 3rd Udacity review.
+                    
                     self.obj1.urlsFromFlickrAPI(latitude: (droppedPin?.lat)!, longitude: (droppedPin?.long)!, page: Int(randomPageNumber))
                         print("this is working compleejhbvsbhkjk")
                 }
@@ -104,7 +103,7 @@ class imageCollectionViewController: UIViewController, NSFetchedResultsControlle
             }
         
         }
-             let randomPageNumber = arc4random_uniform(UInt32(10)) + 1
+         let randomPageNumber = arc4random_uniform(UInt32(20)) + 1// This was recommended in the 2nd Udacity review...
      obj1.urlsFromFlickrAPI(latitude: (droppedPin?.lat)!, longitude: (droppedPin?.long)!, page: Int(randomPageNumber))
         
     }
